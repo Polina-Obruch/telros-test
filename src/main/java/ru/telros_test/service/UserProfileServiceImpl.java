@@ -62,6 +62,15 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfileResponseDto getProfileByUserId(Long userId) {
-        return null;
+        return userMapper.userToUserProfileResponseDto(userRepository.findById(userId).orElseThrow(()
+                -> new EntityNotFoundException("User", userId)));
+    }
+
+    @Transactional
+    @Override
+    public void remove(Long userId) {
+        userRepository.findById(userId).orElseThrow(()
+                -> new EntityNotFoundException("User", userId));
+        userRepository.deleteById(userId);
     }
 }

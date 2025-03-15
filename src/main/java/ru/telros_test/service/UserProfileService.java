@@ -9,4 +9,6 @@ public interface UserProfileService {
 
     UserProfileResponseDto getProfileByUserId(Long userId);
 
+    void remove(Long userId);
+
 }

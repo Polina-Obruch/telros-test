@@ -35,14 +35,6 @@ public class UserContactsServiceImpl implements UserContactsService {
                 userRepository.save(userMapper.userRequestDtoToUser(userDto)));
     }
 
-    @Transactional
-    @Override
-    public void remove(Long userId) {
-        userRepository.findById(userId).orElseThrow(()
-                -> new EntityNotFoundException("User", userId));
-        userRepository.deleteById(userId);
-    }
-
     @Override
     public UserContactsResponseDto getUserById(Long userId) {
         return userMapper.userToUserContactsResponseDto(

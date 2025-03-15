@@ -17,6 +17,7 @@ import ru.telros_test.service.UserContactsService;
 
 import java.util.List;
 
+//Контроллер для работы с обязательной (контактной информацией) - Имя, Фамилия, Телефон, Почта
 @Slf4j
 @Validated
 @RestController
@@ -32,21 +33,21 @@ public class UserContactsController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UserContactsResponseDto addUser(@Valid @RequestBody UserRequestDto userRequestDto) {
-        log.info("добавление пользователя");
+        log.info("Запрос на добавление нового пользователя");
         return userContactsService.addUser(userRequestDto);
     }
 
-    @DeleteMapping("/{userId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeUser(@PathVariable Long userId) {
-        userContactsService.remove(userId);
+    @GetMapping("/{userId}")
+    public UserContactsResponseDto getUserById(@PathVariable Long userId) {
+        log.info("Запрос на выдачу пользователя по ID");
+        return userContactsService.getUserById(userId);
     }
 
     @GetMapping
     public List<UserContactsResponseDto> getAllUsers(@RequestParam(name = "ids", required = false) List<Long> userIds,
                                      @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
                                      @Positive @RequestParam(defaultValue = "10") Integer size) {
-
+        log.info("Запрос на выдачу пользователей");
         return userContactsService.getUsersByIds(
                 userIds, PaginationUtils.toPage(from, size));
     }

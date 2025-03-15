@@ -11,8 +11,6 @@ import java.util.List;
 public interface UserContactsService {
     UserContactsResponseDto addUser(UserRequestDto user);
 
-    void remove(Long userId);
-
     UserContactsResponseDto getUserById(Long userId);
 
     List<UserContactsResponseDto> getUsersByIds(List<Long> userIds, Pageable page);
