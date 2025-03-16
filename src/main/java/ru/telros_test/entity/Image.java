@@ -27,4 +27,5 @@ public class Image {
     private User user;
 
     private byte[] data;
+
 }

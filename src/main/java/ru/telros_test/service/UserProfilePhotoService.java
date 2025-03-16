@@ -11,5 +11,6 @@ public interface UserProfilePhotoService {
     Image getPhotoByUserId(Long userId);
 
     void removePhotoByUserId(Long userId);
+
     Image updatePhotoByUserId(Long userId, MultipartFile updatePhoto) throws IOException;
 }

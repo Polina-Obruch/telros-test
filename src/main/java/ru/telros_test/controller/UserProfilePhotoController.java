@@ -45,7 +45,7 @@ public class UserProfilePhotoController {
     @PatchMapping
     public ResponseEntity<Resource> updatePhoto(@PathVariable Long userId, @RequestPart MultipartFile photo) throws IOException {
         log.info("Запрос на обновление фото в профиль пользователя");
-        Image image = userProfilePhotoService.addPhotoByUserId(userId, photo);
+        Image image = userProfilePhotoService.updatePhotoByUserId(userId, photo);
         ByteArrayResource body = new ByteArrayResource(image.getData());
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, image.getMimeType())
