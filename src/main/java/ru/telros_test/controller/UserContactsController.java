@@ -1,8 +1,7 @@
 package ru.telros_test.controller;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -45,10 +44,9 @@ public class UserContactsController {
 
     @GetMapping
     public List<UserContactsResponseDto> getAllUsers(@RequestParam(name = "ids", required = false) List<Long> userIds,
-                                     @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
-                                     @Positive @RequestParam(defaultValue = "10") Integer size) {
+                                     @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         log.info("Запрос на выдачу пользователей");
         return userContactsService.getUsersByIds(
-                userIds, PaginationUtils.toPage(from, size));
+                userIds, PaginationUtils.toPage(page, size));
     }
 }

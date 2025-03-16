@@ -6,16 +6,17 @@ import ru.telros_test.core.exception.ValidationException;
 
 public class PaginationUtils {
 
-    public static Pageable toPage(Integer from, Integer size) {
-        if (from == null || size == null) {
+    //Параметр page - количество страниц
+    //Параметр size - количество записей на странице
+    public static Pageable toPage(Integer page, Integer size) {
+        if (page == null || size == null) {
             return null;
         }
 
-        if (size <= 0 || from < 0) {
-            throw new ValidationException("Уточнчите правильность параметров отображения");
+        if (size <= 0 || page < 0) {
+            throw new ValidationException("Уточните правильность параметров отображения");
         }
 
-        int page = from / size;
         return PageRequest.of(page, size);
     }
 }
