@@ -36,11 +36,11 @@ public class UserProfilePhotoController {
     public ResponseEntity<Resource> getPhoto(@PathVariable Long userId) {
         log.info("Запрос на получение фото в профиль пользователя");
         Image image = userProfilePhotoService.getPhotoByUserId(userId);
-            ByteArrayResource body = new ByteArrayResource(image.getData());
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_TYPE, image.getMimeType())
-                    .body(body);
-        }
+        ByteArrayResource body = new ByteArrayResource(image.getData());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, image.getMimeType())
+                .body(body);
+    }
 
     @PatchMapping
     public ResponseEntity<Resource> updatePhoto(@PathVariable Long userId, @RequestPart MultipartFile photo) throws IOException {

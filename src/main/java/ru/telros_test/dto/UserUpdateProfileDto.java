@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserUpdateProfileDto{
+public class UserUpdateProfileDto {
 
     @Size(min = 2, max = 200)
     private String name;

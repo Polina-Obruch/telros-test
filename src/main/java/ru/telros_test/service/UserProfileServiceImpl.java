@@ -29,7 +29,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         String name = userUpdate.getName();
         if (name != null && !name.isBlank()) {
-           user.setName(name);
+            user.setName(name);
         }
 
         String lastname = userUpdate.getLastname();
@@ -48,12 +48,12 @@ public class UserProfileServiceImpl implements UserProfileService {
         }
 
         String patronymic = userUpdate.getPatronymic();
-        if (patronymic!= null && !patronymic.isBlank()) {
+        if (patronymic != null && !patronymic.isBlank()) {
             user.setPatronymic(patronymic);
         }
 
         LocalDate birthdate = userUpdate.getBirthdate();
-        if (birthdate!= null) {
+        if (birthdate != null) {
             user.setBirthdate(birthdate);
         }
 

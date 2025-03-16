@@ -15,7 +15,7 @@ import java.io.IOException;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class UserProfilePhotoServiceImpl implements UserProfilePhotoService{
+public class UserProfilePhotoServiceImpl implements UserProfilePhotoService {
     private final ProfilePhotoRepository profilePhotoRepository;
     private final UserRepository userRepository;
 
@@ -59,8 +59,8 @@ public class UserProfilePhotoServiceImpl implements UserProfilePhotoService{
     }
 
     private User checkIfUserExists(Long userId) {
-       return userRepository.findById(userId).orElseThrow(()
-               -> new EntityNotFoundException("User", userId));
+        return userRepository.findById(userId).orElseThrow(()
+                -> new EntityNotFoundException("User", userId));
     }
 
     private Image checkIfImageExists(Long userId) {

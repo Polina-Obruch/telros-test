@@ -3,7 +3,6 @@ package ru.telros_test.controller;
 import jakarta.validation.Valid;
 
 
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +43,7 @@ public class UserContactsController {
 
     @GetMapping
     public List<UserContactsResponseDto> getAllUsers(@RequestParam(name = "ids", required = false) List<Long> userIds,
-                                     @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
+                                                     @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         log.info("Запрос на выдачу пользователей");
         return userContactsService.getUsersByIds(
                 userIds, PaginationUtils.toPage(page, size));

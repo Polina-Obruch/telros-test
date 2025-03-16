@@ -8,6 +8,7 @@ import java.io.IOException;
 public interface UserProfilePhotoService {
 
     Image addPhotoByUserId(Long userId, MultipartFile photo) throws IOException;
+
     Image getPhotoByUserId(Long userId);
 
     void removePhotoByUserId(Long userId);

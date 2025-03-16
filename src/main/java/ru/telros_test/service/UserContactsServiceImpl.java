@@ -39,7 +39,7 @@ public class UserContactsServiceImpl implements UserContactsService {
     public UserContactsResponseDto getUserById(Long userId) {
         return userMapper.userToUserContactsResponseDto(
                 userRepository.findById(userId).orElseThrow(()
-                -> new EntityNotFoundException("User", userId)));
+                        -> new EntityNotFoundException("User", userId)));
     }
 
     @Override
@@ -51,6 +51,6 @@ public class UserContactsServiceImpl implements UserContactsService {
         } else {
             users = userRepository.findAllByIdIn(userIds, page);
         }
-        return  users.stream().map(userMapper::userToUserContactsResponseDto).collect(Collectors.toList());
+        return users.stream().map(userMapper::userToUserContactsResponseDto).collect(Collectors.toList());
     }
 }
